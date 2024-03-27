@@ -14,45 +14,46 @@ class HomeScreen extends StatelessWidget {
     double hi = MediaQuery.of(context).size.height;
     return SafeArea(
         child: Scaffold(
-      backgroundColor:Color.fromRGBO(10, 7, 30, 1),
+      backgroundColor: Color.fromRGBO(10, 7, 30, 1),
       appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset('assets/icons/Icon.svg'),
-              color: Colors.grey,
-            ),
-          ],
-          title: Row(
-            children: [
-              CircleAvatar(
-                child: Image.asset('assets/images/unsplash_a3RhaDG_pNM.png'),
-              ),
-              SizedBox(width: wi * 0.03),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Sarwar Jahan",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontFamily: 'Nunito',
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "Gold Member",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontFamily: 'Nunito',
-                        fontWeight: FontWeight.w200),
-                  )
-                ],
-              )
-            ],
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset('assets/icons/Icon.svg'),
+            color: Colors.grey,
           ),
-          backgroundColor: Color.fromRGBO(10, 7, 30, 1),),
+        ],
+        title: Row(
+          children: [
+            CircleAvatar(
+              child: Image.asset('assets/images/unsplash_a3RhaDG_pNM.png'),
+            ),
+            SizedBox(width: wi * 0.03),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Sarwar Jahan",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontFamily: 'Nunito',
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Gold Member",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontFamily: 'Nunito',
+                      fontWeight: FontWeight.w200),
+                )
+              ],
+            )
+          ],
+        ),
+        backgroundColor: Color.fromRGBO(10, 7, 30, 1),
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -75,7 +76,9 @@ class HomeScreen extends StatelessWidget {
                   height: hi * 0.05,
                   width: wi * 0.45,
                   child: SearchBar(
-                    backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(10, 7, 30, 1),),
+                    backgroundColor: MaterialStatePropertyAll(
+                      Color.fromRGBO(10, 7, 30, 1),
+                    ),
                     hintText: 'Search Music',
                     hintStyle: MaterialStatePropertyAll(
                       TextStyle(color: Colors.grey),
@@ -119,39 +122,50 @@ class HomeScreen extends StatelessWidget {
                     fontFamily: 'Nunito', color: Colors.white, fontSize: 18),
               ),
             ),
-            Column(
-              children: [
-                RecommendItemModel(
-                    imageUrl: 'assets/images/Rectangle Copy 7.png',
-                    title: "Take care of you",
-                    auth: "Admina Thembi",
-                    steams: "114"),
-                RecommendItemModel(
-                    imageUrl: 'assets/images/Rectangle Copy 7 (1).png',
-                    title: "The stranger inside you",
-                    auth: "Jeane Lebras",
-                    steams: "60.5"),
-                RecommendItemModel(
-                    imageUrl: 'assets/images/Rectangle Copy 7 (2).png',
-                    title: "Edwall of beauty mind",
-                    auth: "Jacob Givson",
-                    steams: "44.3"),
-                RecommendItemModel(
-                    imageUrl: 'assets/images/Rectangle Copy 7.png',
-                    title: "Take care of you",
-                    auth: "Admina Thembi",
-                    steams: "114"),
-                RecommendItemModel(
-                    imageUrl: 'assets/images/Rectangle Copy 7 (1).png',
-                    title: "The stranger inside you",
-                    auth: "Jeane Lebras",
-                    steams: "60.5"),
-                RecommendItemModel(
-                    imageUrl: 'assets/images/Rectangle Copy 7 (2).png',
-                    title: "Edwall of beauty mind",
-                    auth: "Jacob Givson",
-                    steams: "44.3"),
-              ],
+            SizedBox(
+              height: hi * 0.50,
+              child: ListView.builder(
+                itemCount: item.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return RecommendItemModel(
+                      imageUrl: item[index]['imageUrl'],
+                      title: item[index]['title'],
+                      auth: item[index]['auth'],
+                      steams: item[index]['steams']);
+                },
+                // children: [
+                //   RecommendItemModel(
+                //       imageUrl: 'assets/images/Rectangle Copy 7.png',
+                //       title: "Take care of you",
+                //       auth: "Admina Thembi",
+                //       steams: "114"),
+                //   RecommendItemModel(
+                //       imageUrl: 'assets/images/Rectangle Copy 7 (1).png',
+                //       title: "The stranger inside you",
+                //       auth: "Jeane Lebras",
+                //       steams: "60.5"),
+                //   RecommendItemModel(
+                //       imageUrl: 'assets/images/Rectangle Copy 7 (2).png',
+                //       title: "Edwall of beauty mind",
+                //       auth: "Jacob Givson",
+                //       steams: "44.3"),
+                //   RecommendItemModel(
+                //       imageUrl: 'assets/images/Rectangle Copy 7.png',
+                //       title: "Take care of you",
+                //       auth: "Admina Thembi",
+                //       steams: "114"),
+                //   RecommendItemModel(
+                //       imageUrl: 'assets/images/Rectangle Copy 7 (1).png',
+                //       title: "The stranger inside you",
+                //       auth: "Jeane Lebras",
+                //       steams: "60.5"),
+                //   RecommendItemModel(
+                //       imageUrl: 'assets/images/Rectangle Copy 7 (2).png',
+                //       title: "Edwall of beauty mind",
+                //       auth: "Jacob Givson",
+                //       steams: "44.3"),
+                // ],
+              ),
             )
           ],
         ),
@@ -159,3 +173,42 @@ class HomeScreen extends StatelessWidget {
     ));
   }
 }
+
+List item = [
+  {
+    'imageUrl': 'assets/images/Rectangle Copy 7.png',
+    'title': "Take care of you",
+    'auth': "Admina Thembi",
+    'steams': "114",
+  },
+  {
+    'imageUrl': 'assets/images/Rectangle Copy 7 (1).png',
+    'title': "The stranger inside you",
+    'auth': "Jeane Lebras",
+    'steams': "60.5"
+  },
+  {
+    'imageUrl': 'assets/images/Rectangle Copy 7 (2).png',
+    'title': "Edwall of beauty mind",
+    'auth': "Jacob Givson",
+    'steams': "44.3"
+  },
+  {
+    'imageUrl': 'assets/images/Rectangle Copy 7.png',
+    'title': "Take care of you",
+    'auth': "Admina Thembi",
+    'steams': "114",
+  },
+  {
+    'imageUrl': 'assets/images/Rectangle Copy 7 (1).png',
+    'title': "The stranger inside you",
+    'auth': "Jeane Lebras",
+    'steams': "60.5"
+  },
+  {
+    'imageUrl': 'assets/images/Rectangle Copy 7 (2).png',
+    'title': "Edwall of beauty mind",
+    'auth': "Jacob Givson",
+    'steams': "44.3"
+  },
+];
